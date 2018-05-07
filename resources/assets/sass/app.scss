@@ -1,9 +1,31 @@
+html {
+  position: relative;
+  min-height: 100% ;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
 
-// Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100% ;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #000;
 
-// Variables
-@import "variables";
+  .container {
+    padding-right: 15px;
+    padding-left: 15px;
 
-// Bootstrap
-@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+    p {
+      margin: 19px 0;
+      color: #c1c1c1;
+
+      a {
+        color: inherit;
+      }
+    }
+  }
+}
