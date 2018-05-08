@@ -23,6 +23,7 @@ class UsersController extends Controller
     //编辑个人信息页面
     public function edit(User $user)
     {
+        //运行UserPolicy授权策略
         $this->authorize('update', $user);
         return view('users.edit', compact('user'));
     }
@@ -30,6 +31,7 @@ class UsersController extends Controller
     //处理个人信息修改 自定义UserRequest
     public function update(UserRequest $request, ImageUploadHandler $uploader, User $user)
     {
+        //运行UserPolicy授权策略
         $this->authorize('update', $user);
         $data = $request->all();
         if ($request->avatar)
