@@ -36,9 +36,22 @@ class UsersController extends Controller
         $data = $request->all();
         if ($request->avatar)
         {
+            //图片上传  数据,目录名,Id,图片限宽
             $rst = $uploader->save($request->avatar, 'avatar', $user->id, 362);
             if ($rst)
             {
+                //如果用户上传了新头像则删除原来的图片
+                $oldimg = $request->input('oldavatarimg');
+                if ( ! empty($oldimg))
+                {
+                    //处理文件路径unlink不能删除带域名的
+                    $path = parse_url($oldimg);
+                    $oldpath = public_path().$path['path'];
+                    if (file_exists($oldpath))
+                    {
+                        unlink($oldpath);
+                    }
+                }
                 $data['avatar'] = $rst['path'];
             }
         }
