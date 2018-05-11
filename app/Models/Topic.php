@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Http\Requests\Request;
+
 class Topic extends Model
 {
     protected $fillable = ['title', 'body', 'category_id', 'excerpt', 'slug'];
@@ -14,6 +16,12 @@ class Topic extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    //一个话题拥有多个回复
+    public function replies()
+    {
+        return $this->hasMany(Reply::class);
     }
 
     public function scopeWithOrder($query, $order)
