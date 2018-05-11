@@ -1,5 +1,6 @@
 <div class="reply-list">
     @foreach ($replies as $index => $reply)
+        @if( ! empty($reply->content))
         <div class=" media"  name="reply{{ $reply->id }}" id="reply{{ $reply->id }}">
             <div class="avatar pull-left">
                 <a href="{{ route('users.show', [$reply->user_id]) }}">
@@ -27,6 +28,7 @@
                 </div>
             </div>
         </div>
+        @endif
         <hr>
     @endforeach
 </div>
