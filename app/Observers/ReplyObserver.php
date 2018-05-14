@@ -30,4 +30,10 @@ class ReplyObserver
     {
         //
     }
+
+    public function deleted(Reply $reply)
+    {
+        //回复被删除话题的reply_count
+        $reply->topic->decrement('reply_count', 1);
+    }
 }
