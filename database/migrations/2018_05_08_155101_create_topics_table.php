@@ -20,6 +20,7 @@ class CreateTopicsTable extends Migration
             $table->text('excerpt');
             $table->string('slug')->nullable();
             $table->timestamps();
+
         });
 	}
 
